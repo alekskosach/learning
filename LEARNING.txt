@@ -1,0 +1,63 @@
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          MEMORIZED RULES & LEARNINGS                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #1 — FULL TDD WITH INTEGRATION TESTS                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Every feature requires TWO integration tests.                              │
+│  Both must go RED before any code is written.                               │
+│                                                                             │
+│  ORDER — no exceptions:                                                     │
+│    1. pnpm test:all          confirm green baseline                         │
+│    2. DB integration test    → must go RED                                  │
+│    3. API integration test   → must go RED                                  │
+│    4. schema + migration     if needed                                      │
+│    5. write feature code                                                    │
+│    6. pnpm test:all          confirm all green                              │
+│    7. build + deploy                                                        │
+│                                                                             │
+│  DB TEST  src/__tests__/integration/*.integration.test.ts                   │
+│    · Uses real duplex_test database                                         │
+│    · Tests schema fields, enums, constraints                                │
+│    · Goes RED when field/enum missing from schema                           │
+│                                                                             │
+│  API TEST  src/__tests__/integration/api/*-api.integration.test.ts          │
+│    · Imports real route handlers (GET, POST, PUT, PATCH, DELETE)            │
+│    · Mocks only getServerSession — everything else is real                  │
+│    · Asserts HTTP status + response body + DB state after each call         │
+│    · Goes RED when handler logic or DB write is wrong                       │
+│                                                                             │
+│  WHY: Mock-based tests pass regardless of schema state — they prove         │
+│  nothing. Only real integration tests go red when a feature doesn't         │
+│  exist yet. Nothing should break in production after new features.          │
+│                                                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  MEMORIZED IN 3 PLACES                                                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. SERVER MEMORY                                                           │
+│     /root/.claude/projects/-root/memory/feedback_tdd.md                    │
+│     Loaded automatically every session on this server                       │
+│                                                                             │
+│  2. MEMORY INDEX                                                            │
+│     /root/.claude/projects/-root/memory/MEMORY.md                          │
+│     Entry: TDD rule — always write real integration test first              │
+│                                                                             │
+│  3. PROJECT CLAUDE.md                                                       │
+│     /root/duplex/CLAUDE.md                                                  │
+│     Loaded every time Claude works in duplex on any machine                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #2 — GIT NOT GH                                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Never use gh CLI or GitHub tokens to edit files in a repo.                 │
+│  Always use: git clone → edit → git push                                    │
+│                                                                             │
+│  gh is only for: PRs, issues, releases (GitHub API things)                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
