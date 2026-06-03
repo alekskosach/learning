@@ -1,0 +1,18 @@
+HOW TO TEST IF CLAUDE SURVIVED THE SESSION RESET
+=================================================
+
+Option A — from your local Mac:
+  ~/restore.duplex.progress
+  That SSHs to the server, pulls context from GitHub, and launches a new Claude session.
+
+Option B — directly on the server:
+  Close this session, SSH back in, then type:
+  claude
+
+When the new session starts, ask it:
+  - "Who am I?"            — it should know you are Aleks
+  - "What did we build last session?"  — it should know the repairs features, TDD, /survive
+  - "What mistakes did you make?"      — it should know the verification failures
+  - "What is CLAUDE_SELF.md?"          — it should know it exists and what it contains
+
+If it answers those without you telling it anything — the survival worked.
