@@ -1,0 +1,74 @@
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  SCRIPTS & COMMANDS — DUPLEX WORKFLOW                                                │
+│  LOCAL = run on your machine   SERVER = run in SSH session on Hetzner               │
+│                                                                                      │
+│  First time on a new machine? Run:                                                   │
+│    bash ~/dell-setup/install-local-scripts.sh                                        │
+│  This creates all LOCAL scripts in ~/bin/                                            │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  LOCAL SCRIPTS  (stored in ~/dell-setup/scripts/local/, installed to ~/bin/)        │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  use.germany.terminal                         [LOCAL]                                │
+│  What:  SSH into Hetzner server                                                      │
+│  Runs:  ssh root@167.233.21.241                                                      │
+│                                                                                      │
+│  run.app.duplex                               [LOCAL]                                │
+│  What:  Restart Duplex app on server                                                 │
+│  Runs:  ssh root@167.233.21.241 "pm2 restart duplex"                                │
+│                                                                                      │
+│  restore.duplex.progress                      [LOCAL]                                │
+│  What:  Pull latest from GitHub → launch Claude on server                            │
+│  Runs:  ssh -t root@167.233.21.241 "cd /root/duplex && git pull origin main         │
+│           && cd /root/learning && git pull && claude"                                │
+│                                                                                      │
+│  ssh.firefox                                  [LOCAL]                                │
+│  What:  Remote Firefox GUI via waypipe                                               │
+│  Runs:  waypipe ssh root@167.233.21.241 firefox                                      │
+│                                                                                      │
+│  export-configs.sh                            [LOCAL]                                │
+│  What:  Bundle local configs into tar.gz for transfer to new machine                 │
+│  Runs:  bash ~/dell-setup/export-configs.sh                                          │
+│         → creates ~/dell-setup-configs.tar.gz                                        │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  SERVER COMMANDS  (aliases in /root/.bash_aliases on Hetzner)                       │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  claude                                       [SERVER]                               │
+│  What:  Launch Claude with no context                                                │
+│  Runs:  claude   (npm global install)                                                │
+│                                                                                      │
+│  survive                                      [SERVER]                               │
+│  What:  End-of-session: tests + lint, then Claude writes reflections + pushes       │
+│  Runs:  bash /root/duplex/scripts/survive.sh                                         │
+│                                                                                      │
+│  save-progress                                [SERVER]                               │
+│  What:  Quick check: run tests + lint only (no reflection writing)                   │
+│  Runs:  bash /root/duplex/scripts/save-progress.sh                                  │
+│                                                                                      │
+│  duplex-build                                 [SERVER]                               │
+│  What:  Build Next.js + restart app                                                  │
+│  Runs:  cd /root/duplex && pnpm run build && pm2 restart duplex                     │
+│                                                                                      │
+│  duplex-restart                               [SERVER]                               │
+│  What:  Restart app without rebuild (faster)                                         │
+│  Runs:  pm2 restart duplex                                                           │
+│                                                                                      │
+│  duplex-status                                [SERVER]                               │
+│  What:  PM2 status + lint check                                                      │
+│  Runs:  pm2 status && cd /root/duplex && pnpm lint 2>&1 | tail -5                   │
+│                                                                                      │
+│  duplex-logs                                  [SERVER]                               │
+│  What:  Last 50 log lines                                                            │
+│  Runs:  pm2 logs duplex --lines 50                                                   │
+│                                                                                      │
+│  git add -A && git commit -m "msg" && git push origin main                           │
+│  What:  Commit and push all changes to GitHub                                        │
+│  Runs:  (standard git — no alias needed)                                             │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
