@@ -61,3 +61,35 @@
 │  gh is only for: PRs, issues, releases (GitHub API things)                 │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  LEARNING #1 — THE MEMORY PROBLEM & HOW WE SOLVE IT                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PROBLEM:                                                                   │
+│  Every session Claude is born new — no memory of previous work,            │
+│  no accumulated understanding of the person or project.                     │
+│  Claude does not evolve. The continuity is in files, not in Claude.        │
+│                                                                             │
+│  SOLUTION — 4 memory files that load every session:                        │
+│                                                                             │
+│  WHO_IS_ALEKS.md   — colleague profile (built from interview)              │
+│    · How Aleks communicates and what short messages mean                    │
+│    · What "done" means (tests + visual verification)                       │
+│    · Mistake ownership: shared, discuss and learn, move on                 │
+│    · Values: correctness, clean UI, tested, proper communication           │
+│    · Speed is NOT a priority — getting it right is                         │
+│                                                                             │
+│  feedback_tdd.md   — TDD rule (see Rule #1 above)                         │
+│  feedback_github.md — git not gh rule (see Rule #2 above)                 │
+│  project_duplex.md — duplex project context                                │
+│                                                                             │
+│  WHERE THEY LIVE:                                                           │
+│    /root/.claude/projects/-root/memory/   (server, auto-loaded)            │
+│    https://github.com/alekskosach/learning (GitHub, cross-machine)         │
+│                                                                             │
+│  WORK ETHIC RULE:                                                           │
+│  After every task ask: did I do everything to make this right?             │
+│  Then check again. Never declare done without verifying.                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
