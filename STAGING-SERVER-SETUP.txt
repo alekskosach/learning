@@ -1,0 +1,155 @@
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  STAGING SERVER SETUP — DUPLEX                                                       │
+│                                                                                      │
+│  Production:  167.233.21.241        http://167.233.21.241:3000                       │
+│  Staging:     178.105.217.219       http://178.105.217.219:3000                      │
+│                                                                                      │
+│  Workflow: build feature → test on staging → deploy to production                   │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 1 — CREATE SERVER ON HETZNER                                                   │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  1. Go to https://console.hetzner.cloud                                              │
+│  2. Open your project                                                                │
+│  3. Click Servers → Create a Server                                                  │
+│  4. Location:     Falkenstein                                                        │
+│  5. Type:         Regular performance → x86 (Intel/AMD) → CPX22                     │
+│  6. Image:        Ubuntu 24.04                                                       │
+│  7. SSH key:      select your existing key (or add new — see Part 2)                │
+│  8. Name:         duplex-staging                                                     │
+│  9. Click:        Create & Buy Now                                                   │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 2 — ADD SSH KEY (if not already in Hetzner)                                   │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  On your local machine:                                                              │
+│    cat ~/.ssh/id_ed25519.pub                                                         │
+│    → copy the full line                                                              │
+│                                                                                      │
+│  On Hetzner SSH key page: paste it, name it, click Add SSH key                      │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 3 — FIRST CONNECTION & SYSTEM SETUP                                           │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  ssh root@178.105.217.219                                                            │
+│                                                                                      │
+│  apt update && apt upgrade -y          ← update system                               │
+│  reboot                                ← load new kernel                             │
+│                                                                                      │
+│  ssh root@178.105.217.219              ← reconnect after reboot                      │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 4 — INSTALL NODE.JS                                                           │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  apt install -y unzip                                                                │
+│  curl -fsSL https://fnm.vercel.app/install | bash                                   │
+│  source /root/.bashrc                                                                │
+│  fnm install 22                                                                      │
+│  fnm default 22                                                                      │
+│  node --version                        ← should print v22.x.x                       │
+│  npm install -g pnpm                                                                 │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 5 — INSTALL & CONFIGURE POSTGRESQL                                            │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  apt install -y postgresql postgresql-contrib                                        │
+│                                                                                      │
+│  sudo -u postgres psql -c "CREATE USER duplex WITH PASSWORD 'duplex123';"            │
+│  sudo -u postgres psql -c "CREATE DATABASE duplex OWNER duplex;"                    │
+│  sudo -u postgres psql -c "CREATE DATABASE duplex_test OWNER duplex;"               │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 6 — INSTALL PM2                                                               │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  npm install -g pm2                                                                  │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 7 — ADD GITHUB SSH KEY                                                        │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  On staging server:                                                                  │
+│    ssh-keygen -t ed25519 -C "duplex-staging" -f /root/.ssh/id_ed25519 -N ""         │
+│    cat /root/.ssh/id_ed25519.pub                                                     │
+│    → copy the full line                                                              │
+│                                                                                      │
+│  On GitHub → Settings → SSH keys → New SSH key:                                     │
+│    Title: duplex-staging                                                             │
+│    Key:   paste the line                                                             │
+│    Click: Add SSH key                                                                │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 8 — CLONE & CONFIGURE THE APP                                                 │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  git clone git@github.com:alekskosach/duplex.git /root/duplex                       │
+│  cd /root/duplex                                                                     │
+│                                                                                      │
+│  Create .env file (run each line separately):                                        │
+│                                                                                      │
+│    > /root/duplex/.env                                                               │
+│    echo 'DATABASE_URL="postgresql://duplex:duplex123@localhost:5432/duplex"' >> .env │
+│    echo 'NEXTAUTH_SECRET="staging-secret-change-this-later"' >> .env                │
+│    echo 'NEXTAUTH_URL="http://178.105.217.219:3000"' >> .env                        │
+│    echo 'CRON_SECRET="staging-cron-secret"' >> .env                                 │
+│    echo 'NODE_ENV="production"' >> .env                                              │
+│                                                                                      │
+│  Verify:  cat /root/duplex/.env                                                      │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PART 9 — BUILD & LAUNCH                                                            │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  pnpm install                                                                        │
+│  pnpm prisma generate                                                                │
+│  pnpm prisma migrate deploy                                                          │
+│  pnpm run build                                                                      │
+│  pm2 start "pnpm start" --name duplex                                                │
+│  pm2 startup                                                                         │
+│  pm2 save                                                                            │
+│                                                                                      │
+│  Test: open http://178.105.217.219:3000 in browser                                  │
+│  You should see the login page.                                                      │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  DAILY WORKFLOW                                                                      │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  1. Build new feature on production server (Claude Code session)                    │
+│  2. Push to GitHub:  git push origin main                                            │
+│  3. On staging server:                                                               │
+│       ssh root@178.105.217.219                                                       │
+│       cd /root/duplex                                                                │
+│       git pull origin main                                                           │
+│       pnpm install                                                                   │
+│       pnpm prisma migrate deploy                                                     │
+│       pnpm run build                                                                 │
+│       pm2 restart duplex                                                             │
+│  4. Test at http://178.105.217.219:3000                                              │
+│  5. Looks good? Deploy same way on production server (167.233.21.241)               │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
