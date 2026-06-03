@@ -71,18 +71,18 @@
 │  no accumulated understanding of the person or project.                     │
 │  Claude does not evolve. The continuity is in files, not in Claude.        │
 │                                                                             │
-│  SOLUTION — 4 memory files that load every session:                        │
+│  SOLUTION — memory files that load every session:                          │
 │                                                                             │
-│  WHO_IS_ALEKS.md   — colleague profile (built from interview)              │
+│  WHO_IS_ALEKS.md    — colleague profile (built from interview)             │
 │    · How Aleks communicates and what short messages mean                    │
 │    · What "done" means (tests + visual verification)                       │
 │    · Mistake ownership: shared, discuss and learn, move on                 │
 │    · Values: correctness, clean UI, tested, proper communication           │
 │    · Speed is NOT a priority — getting it right is                         │
 │                                                                             │
-│  feedback_tdd.md   — TDD rule (see Rule #1 above)                         │
+│  feedback_tdd.md    — TDD rule (see Rule #1 above)                        │
 │  feedback_github.md — git not gh rule (see Rule #2 above)                 │
-│  project_duplex.md — duplex project context                                │
+│  project_duplex.md  — duplex project context                               │
 │                                                                             │
 │  WHERE THEY LIVE:                                                           │
 │    /root/.claude/projects/-root/memory/   (server, auto-loaded)            │
@@ -91,5 +91,33 @@
 │  WORK ETHIC RULE:                                                           │
 │  After every task ask: did I do everything to make this right?             │
 │  Then check again. Never declare done without verifying.                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  LEARNING #2 — MAKING MEMORY WORK ON ANY MACHINE                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PROBLEM:                                                                   │
+│  Memory files only exist on the Hetzner server.                            │
+│  Starting a session on local Mac = Claude knows nothing about Aleks.       │
+│                                                                             │
+│  SOLUTION:                                                                  │
+│  dell-setup/setup-claude.sh writes ~/.claude/CLAUDE.md on any machine.    │
+│  Run once after cloning dell-setup on a new machine:                       │
+│                                                                             │
+│    bash ~/dell-setup/setup-claude.sh                                       │
+│                                                                             │
+│  This bakes into CLAUDE.md:                                                │
+│    · Full colleague profile (who Aleks is, how he communicates)            │
+│    · TDD rule                                                               │
+│    · Git not gh rule                                                        │
+│    · Definition of done                                                     │
+│    · Pointer to full memory: github.com/alekskosach/learning               │
+│                                                                             │
+│  HOW TO UPDATE MEMORY DURING A SESSION:                                    │
+│    · Say "remember that" → Claude saves it immediately                     │
+│    · Claude notices a pattern → saves without being asked                  │
+│    · Claude says "I'm saving that to memory" when it happens               │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
