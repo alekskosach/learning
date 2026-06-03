@@ -1,0 +1,72 @@
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                        DUPLEX — PROFESSIONAL SETUP                           │
+│                                                                              │
+│  NOTE: We currently have ONE server: 167.233.21.241                         │
+│  The staging server (178.105.217.219) was deleted from Hetzner.              │
+│  When ready, a second server (production) will be created on Hetzner.        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  YOU + CLAUDE                GITHUB                    PRODUCTION SERVER
+  ─────────────               ──────────────            ─────────────────────────
+  Dev server                  main branch               (new server — to create)
+  167.233.21.241              (source of truth)
+       │                            │                          │
+       │  1. write feature          │                          │
+       │  2. test it                │                          │
+       │  3. git push  ──────────►  │                          │
+       │                            │  4. GitHub Actions runs  │
+       │                            │     - builds Docker      │
+       │                            │       container          │
+       │                            │     - runs tests         │
+       │                            │     - if tests pass ──►  │
+       │                            │                          │  5. pulls new
+       │                            │                          │     container
+       │                            │                          │  6. swaps old
+       │                            │                          │     for new
+       │                            │                          │  7. app updated
+       │                            │                          │     zero downtime
+
+  If something breaks in production:
+                                                     rollback  │  one command
+                                                     ──────►   │  old container
+                                                               │  back in seconds
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  DOCKER CONTAINER  (declared environment — same everywhere)                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Inside every container:                                                     │
+│    · Exact Node version                                                      │
+│    · Exact app code                                                          │
+│    · Exact dependencies                                                      │
+│    · Environment variables                                                   │
+│                                                                              │
+│  PostgreSQL runs in its own container next to it                             │
+│                                                                              │
+│  Result: dev server and production run IDENTICAL environments                │
+│  "works on my machine" problem disappears completely                         │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  WHAT TO BUILD (in order)                                                    │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Step 1 — Dockerfile                                                         │
+│    Write a file that describes how to build the Duplex app container         │
+│                                                                              │
+│  Step 2 — docker-compose.yml                                                 │
+│    Define two containers: app + PostgreSQL                                   │
+│    Run locally on dev server with one command: docker compose up             │
+│                                                                              │
+│  Step 3 — GitHub Actions workflow                                            │
+│    On every git push to main:                                                │
+│      - build Docker container                                                │
+│      - run tests                                                             │
+│      - if tests pass → deploy to production server                          │
+│                                                                              │
+│  Step 4 — Create production server on Hetzner                               │
+│    Fresh server, Docker only, no manual installs                             │
+│    Production pulls containers from GitHub, nothing else                     │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
