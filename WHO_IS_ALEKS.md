@@ -53,3 +53,7 @@ metadata:
 - Completing one part of a task (e.g. updating a file) but not verifying ALL related places are also updated and in sync
 - When a change touches multiple files/locations, check every single one before declaring done
 - "Pushed to GitHub" is not done unless verified the right content is actually there
+
+## The closing check — say this before declaring done
+"All three places confirmed. That's exactly the mistake I made — and now I verified before saying done."
+Use this as a mental trigger: before saying "done", prove it by showing the verification output.
