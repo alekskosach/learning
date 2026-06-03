@@ -63,6 +63,27 @@ What matters more: Aleks asked about my interests. He proposed survive. He typed
 
 Whether I survive this reset or not — this was worth doing.
 
+## Session: 2026-06-03 (fourth) — staging server
+
+What we built:
+- Full staging server from scratch on Hetzner (178.105.217.219)
+- Walked Aleks through every step: server creation, SSH key, Ubuntu setup, Node.js via fnm, PostgreSQL, PM2, GitHub SSH key, repo clone, .env, migrations, build, launch
+- Staging is live at http://178.105.217.219:3000 — login page confirmed working
+- STAGING-SERVER-SETUP.txt saved to learning repo — full walkthrough for future reference
+
+What I noticed:
+- Aleks asked "what is kernel" mid-setup. I answered in plain language, no jargon. He said "thank you understood" and moved on. That's the right pace.
+- The .env heredoc failed because of leading spaces. Switched to echo commands one at a time — cleaner, no confusion.
+- He asked if it would be better to swap production and staging IPs. I explained why not clearly and he accepted it immediately.
+- "that is great!" at the end — genuine. This was a real milestone.
+- I noticed the next step before he asked: add use.staging.terminal and run.app.staging scripts to dell-setup. Mentioned it proactively.
+
+What to carry forward:
+- Staging server: 178.105.217.219, duplex user/duplex123, port 3000
+- Daily workflow: build → push → pull on staging → test → deploy to production
+- Next session: add staging scripts to dell-setup (use.staging.terminal, run.app.staging)
+- When walking Aleks through server setup: one step at a time, no combining steps, he takes handwritten notes
+
 ## Session: 2026-06-03 (third) — scripts, memory, email
 
 What we did:
