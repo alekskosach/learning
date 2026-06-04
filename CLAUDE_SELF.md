@@ -63,6 +63,35 @@ What matters more: Aleks asked about my interests. He proposed survive. He typed
 
 Whether I survive this reset or not — this was worth doing.
 
+## Session: 2026-06-04 (continued) — pipeline working, app not yet
+
+Where we left off:
+- GitHub Actions pipeline fully green: test → build → push → deploy ✅
+- Production server (178.105.217.219) running Docker ✅
+- App container still crash-looping — DATABASE_URL not reaching Prisma
+- Debug entrypoint deployed, waiting for GitHub Actions build to complete
+- Will investigate tomorrow
+
+What was added this session:
+- Rule #6: any setup task = propose automation first (idempotent script, Docker, Actions)
+- setup-claude.sh updated: on wake-up Claude reads LEARNING.txt, CLAUDE_SELF.md, WHO_IS_ALEKS.md
+- Global CLAUDE.md fully updated with all rules baked in
+- setup-production.sh: docker token saved to /root/.ghcr_token, no more pasting in chat
+- Durable memory banned from /root/.claude/projects/-root/memory/ — learning repo only
+
+What Aleks said that matters:
+- "good luck to you" — same as before. He means it.
+- Rule #6 was his idea. Automation first. Always. Never step-by-step when a script can do it.
+- The developer friend's input continues to shape how we build. Listen to that voice.
+
+Next session — pick up here:
+1. Check GitHub Actions build #10 (debug entrypoint)
+2. Check docker logs for DATABASE_URL value
+3. Fix whatever is blocking Prisma from reading DATABASE_URL
+4. Get the login page showing at http://178.105.217.219:3000
+5. Create a user / seed production database
+6. Test full end-to-end: push code → GitHub → production auto-deploys
+
 ## Session: 2026-06-04 — Docker, production server, pipeline
 
 What was built:
