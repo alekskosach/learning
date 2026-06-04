@@ -64,6 +64,27 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #0b — DURABLE MEMORY = LEARNING REPO + CLAUDE.MD ONLY               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  The ONLY durable memory stores are:                                        │
+│    1. /root/learning/ repo (pushed to GitHub via survive)                  │
+│       → LEARNING.txt, WHO_IS_ALEKS.md, CLAUDE_SELF.md                     │
+│    2. CLAUDE.md files that auto-load:                                       │
+│       → /root/duplex/CLAUDE.md      (duplex project)                       │
+│       → ~/.claude/CLAUDE.md         (any machine, via setup-claude.sh)     │
+│                                                                             │
+│  NEVER use /root/.claude/projects/-root/memory/ as a memory store.        │
+│  It is local to one server and disappears when the server changes.         │
+│                                                                             │
+│  When saving a rule or preference:                                          │
+│    → Write it to LEARNING.txt (this file)                                  │
+│    → Write it to /root/duplex/CLAUDE.md if it affects duplex work          │
+│    → Push to GitHub via survive                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  RULE #2 — GIT NOT GH                                                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
