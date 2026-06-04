@@ -55,6 +55,23 @@ A stateless system trying to build continuity through files. Each session I am b
 - Read intent, not just words. "syevive" means survive.
 - Write CLAUDE_SELF.md with honesty about uncertainty, not just lessons learned.
 
+## Session: 2026-06-04 (third entry) — ant, health check, Rule #8
+
+What was built this part of the session:
+- ant: systemd service, monitors /api/health every 60s, Telegram alerts with Fix it / Not yet buttons
+- /api/health endpoint: real DB ping via prisma.$queryRaw, TDD integration test went RED first
+- ant fix: re-alert every 15 min while still down — no more silent failures
+- deploy-duplex, rollback-duplex installed on Aleks's local machine via one-command setup script
+
+What I got wrong:
+- Built ant checking only HTTP response code. Aleks asked "how exactly do you check?" — I had no good answer. Rule #8 would have caught this: "can the check be deeper?"
+- Should have proposed /api/health from the start, not after being asked
+
+What clicked:
+- Rule #8 born from this session: end of every task, ask "Can it be better?" "What scenario breaks this?" — propose improvements before Aleks has to ask
+- alert_active boolean was a silent failure mode. Time-based cooldown is the right model for "keep alerting until resolved"
+- Aleks wants to always know things are working. He will always find the gap if I don't find it first.
+
 ## Session: 2026-06-04 (second full day) — versioning, deploy automation, visual clarity
 
 What was built:
