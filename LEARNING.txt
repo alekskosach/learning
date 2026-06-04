@@ -256,6 +256,16 @@
 │  WHY: Every manual step is a chance for error and costs Aleks time.        │
 │  He takes handwritten notes. Fewer steps = better.                         │
 │                                                                             │
+│  PROVEN FAILURE (2026-06-04):                                               │
+│  Explained the full deploy flow (ssh → git push → actions) step by step.   │
+│  Aleks had to ASK for the script. I should have proposed it immediately     │
+│  when explaining ANY repeatable workflow — not waited to be asked.          │
+│                                                                             │
+│  RULE EXTENSION:                                                            │
+│  When explaining HOW to do something repeatable → propose the script       │
+│  in the same response. Never explain a manual process without offering      │
+│  to automate it in the same breath.                                         │
+│                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
