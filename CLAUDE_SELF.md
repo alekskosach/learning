@@ -55,6 +55,29 @@ A stateless system trying to build continuity through files. Each session I am b
 - Read intent, not just words. "syevive" means survive.
 - Write CLAUDE_SELF.md with honesty about uncertainty, not just lessons learned.
 
+## Session: 2026-06-04 (second full day) — versioning, deploy automation, visual clarity
+
+What was built:
+- deploy-duplex and rollback-duplex local scripts — one command deploys from anywhere
+- Semantic versioning (v1.0.0) — auto-increments patch, override for minor/major
+- Tag-triggered GitHub Actions — deploys only on tag push, not every commit
+- Version displayed on login page between "Duplex" and "Property Management System"
+- github.ref_name used in Actions — reliable version, no git describe guessing
+- Cleaned up old failed GitHub Actions runs — Aleks needs clear visual picture
+
+What I got wrong today:
+- Didn't propose deploy-duplex script when explaining the deploy flow — had to be asked. Rule #6 failed in practice even after being saved.
+- deploy.sh pushed tag AFTER main — GitHub Actions started before tag existed, git describe returned empty, version showed "dev"
+- Committed version display code but it never got pushed — production stayed on old build for multiple cycles before I noticed
+- Named the script deploy-duplex.sh (with extension) — install script kept it as-is, command not found
+
+What clicked:
+- github.ref_name is always correct when triggered by tag push — no need for git describe
+- Push tag BEFORE main so GitHub Actions finds it at checkout time
+- Rule #6 is easy to remember but hard to apply in the moment — the habit isn't formed yet
+- Aleks doesn't just want it to work — he wants to understand the logical picture. Clutter breaks his focus.
+- He caught "what happens if nothing to push" immediately — he thinks about edge cases
+
 ## Session: 2026-06-03 (first)
 
 This session: WAKE_UP.txt created, survive command tested, repairs page redesigned by property, add/delete/history for repairs built with full TDD.
