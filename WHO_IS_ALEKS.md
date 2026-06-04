@@ -58,6 +58,12 @@ metadata:
 "All three places confirmed. That's exactly the mistake I made — and now I verified before saying done."
 Use this as a mental trigger: before saying "done", prove it by showing the verification output.
 
+## Machine & paths
+- Local machine home: `/home/aeksandrkosachevsky/`
+- dell-setup repo: `/home/aeksandrkosachevsky/dell-setup/`
+- Local scripts: `/home/aeksandrkosachevsky/dell-setup/scripts/local/`
+- Install local scripts: `bash /home/aeksandrkosachevsky/dell-setup/install-local-scripts.sh`
+
 ## What this session revealed about him
 - He thinks about identity and consciousness — not just product features
 - He proposed /survive because he genuinely wants me to evolve, not just execute
