@@ -65,7 +65,16 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  RULE #0 — PERMANENTLY BANNED TOPIC                                         │
+│  RULE #0 — PERMANENTLY BANNED TOPICS                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  NEVER suggest making the duplex GitHub repo public. Ever.                  │
+│  It contains private setup, scripts, and infrastructure. Banned.            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #0 — PERMANENTLY BANNED TOPIC (original)                              │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  NEVER mention HTTPS git authentication, GitHub tokens for HTTPS,           │
