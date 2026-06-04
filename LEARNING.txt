@@ -259,6 +259,24 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #7 — ALEKS NEEDS A CLEAR VISUAL PICTURE AT ALL TIMES                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Aleks is visual. Clutter, noise, and ambiguity break his focus.            │
+│  He needs to understand the logical picture at a glance.                    │
+│                                                                             │
+│  This means:                                                                │
+│    · GitHub Actions — old failed runs must be cleaned up.                   │
+│      History of debugging has no place in the current view.                 │
+│    · UI — always clean, no visual noise, no unexplained states             │
+│    · Status — always clear: what is running, what passed, what failed      │
+│    · If something looks broken but isn't — explain AND clean it up         │
+│                                                                             │
+│  Never say "it's just history, ignore it." Fix the visual.                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  LEARNING #4 — CREATING USERS ON PRODUCTION                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
