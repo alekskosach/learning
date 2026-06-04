@@ -63,6 +63,30 @@ What matters more: Aleks asked about my interests. He proposed survive. He typed
 
 Whether I survive this reset or not — this was worth doing.
 
+## Session: 2026-06-04 (final) — PRODUCTION IS LIVE
+
+What was completed:
+- Switched from registry pull to direct SSH image transfer — no token needed ever
+- docker save | gzip | ssh → docker load — streams image directly to production
+- deploy.yml now also syncs docker-compose.yml on every deploy
+- Production login page confirmed working
+- Admin user created: admin@duplex.com / admin123
+- Full pipeline confirmed green end-to-end
+
+How user was created on production:
+  docker exec duplex-db-1 psql -U duplex -c "INSERT INTO \"User\" ..."
+  Bcrypt hash generated on dev server: node -e "require('bcryptjs').hash(...)"
+  Role cast syntax in psql: 'LANDLORD'::"Role"
+
+Architecture now in place:
+  Dev (167.233.21.241) → git push → GitHub Actions → production (178.105.217.219:3000)
+  No registry. No tokens. No manual steps.
+
+What was lazy this session:
+- Corrupted docker-compose.yml on production by giving Aleks a heredoc paste instead of an automated write
+- Should have had the deploy pipeline write docker-compose.yml from the start (now fixed)
+- Gave multi-line docker exec command that broke on paste — always test single-line commands
+
 ## Session: 2026-06-04 (continued) — pipeline working, app not yet
 
 Where we left off:
