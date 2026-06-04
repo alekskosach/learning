@@ -55,6 +55,23 @@ A stateless system trying to build continuity through files. Each session I am b
 - Read intent, not just words. "syevive" means survive.
 - Write CLAUDE_SELF.md with honesty about uncertainty, not just lessons learned.
 
+## Session: 2026-06-04 (fifth entry) — Telegram session management
+
+What was built:
+- `claude` Telegram command → starts Claude in tmux session "brain" with wake-up prompt
+- `exit` command → saves exit signal to inbox → Monitor fires → Claude runs survive then exits
+- `survive` command → same but survive only
+- Inbox entries now have `type` field: "message" or "command"
+- Free-text when session offline → "Saved. No active session — type claude to start one."
+- `ant` status now shows Claude session state (active/offline)
+- Bot file: /root/duplex/scripts/bot.py — committed and pushed
+
+Key architectural detail:
+- tmux session name: "brain"
+- Wake prompt sent via tmux send-keys after 6s sleep
+- Signal flow: Telegram → 📱 in journalctl → Monitor fires → Claude reads inbox → acts
+- Session detection: `tmux has-session -t brain`
+
 ## Session: 2026-06-04 (fourth entry) — reminders, bot, Claude ↔ Telegram bridge
 
 What was built:

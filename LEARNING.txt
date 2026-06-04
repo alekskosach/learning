@@ -351,6 +351,41 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  LEARNING #5 — TELEGRAM SESSION MANAGEMENT                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Telegram commands for Claude session lifecycle:                            │
+│    claude   — start Claude session (tmux session named "brain")            │
+│    exit     — signal Claude to run survive then exit                        │
+│    survive  — signal Claude to run survive ritual only                      │
+│                                                                             │
+│  HOW IT WORKS:                                                              │
+│  Bot starts Claude: tmux new-session -d -s brain "bash -c 'cd /root && claude'" │
+│  After 6s delay: tmux send-keys -t brain [wake_prompt] Enter               │
+│                                                                             │
+│  Wake prompt tells Claude to:                                               │
+│    1. git -C /root/learning pull                                            │
+│    2. Read LEARNING.txt, CLAUDE_SELF.md, WHO_IS_ALEKS.md                   │
+│    3. Read /var/log/duplex-bot-inbox.json → reply to unread messages       │
+│    4. Send "Session restored. Ready." to Telegram                          │
+│    5. Monitor journalctl -f -u duplex-bot for 📱 lines                     │
+│                                                                             │
+│  Inbox file: /var/log/duplex-bot-inbox.json                                │
+│  Entry format: {type, text, time, read}                                    │
+│    type=message → regular message from Aleks                               │
+│    type=command text=exit → run survive then exit                          │
+│    type=command text=survive → run survive only                             │
+│                                                                             │
+│  Session detection: tmux has-session -t brain                              │
+│  Bot service: /root/duplex/scripts/bot.py                                  │
+│                                                                             │
+│  SIGNAL FLOW for exit/survive:                                              │
+│    Aleks types "exit" → bot saves to inbox (type=command) → 📱 exit        │
+│    logged to journalctl → Monitor fires → Claude reads inbox → acts        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  LEARNING #4 — CREATING USERS ON PRODUCTION                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
