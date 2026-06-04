@@ -1,0 +1,75 @@
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  PRODUCTION SERVER SETUP — DUPLEX                                                    │
+│                                                                                      │
+│  The correct way: ONE script, run once, does everything automatically.               │
+│  No manual steps. No memory required. Safe to re-run.                                │
+│                                                                                      │
+│  Dev server:        167.233.21.241   ← you and Claude work here                     │
+│  Production server: 178.105.217.219  ← users go here, deployed via GitHub           │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  HOW IT WORKS                                                                        │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  1. Create fresh server on Hetzner (CPX22, Ubuntu 24.04)                            │
+│  2. SSH in: ssh root@178.105.217.219                                                 │
+│  3. Run ONE command:                                                                 │
+│                                                                                      │
+│       bash <(curl -fsSL https://raw.githubusercontent.com/alekskosach/duplex/       │
+│             main/scripts/setup-production.sh)                                        │
+│                                                                                      │
+│  4. Script prints the GitHub Actions SSH public key at the end                       │
+│  5. Add that key to GitHub Secrets (see below)                                       │
+│  6. Push any commit to main → GitHub Actions deploys automatically                  │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  WHAT THE SCRIPT DOES (idempotent — safe to run multiple times)                     │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  Step 1  Install Docker (skips if already installed)                                 │
+│  Step 2  Create SSH key for GitHub Actions (skips if exists)                        │
+│  Step 3  Add that key to authorized_keys (skips if already there)                  │
+│  Step 4  Clone repo to get docker-compose.yml (skips if exists)                    │
+│  Step 5  Create .env file with production secrets (skips if exists)                 │
+│  Step 6  Pull Docker image from GitHub registry                                      │
+│  Step 7  Start app with docker compose                                               │
+│  Step 8  Set up auto-restart on server reboot                                       │
+│  Step 9  Print the public SSH key for GitHub Secrets                                │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  GITHUB SECRETS TO ADD (after running the script)                                   │
+│  Go to: github.com/alekskosach/duplex/settings/secrets/actions                      │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  PRODUCTION_HOST        178.105.217.219                                              │
+│  PRODUCTION_SSH_KEY     (printed by the script at the end)                          │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│  DAILY WORKFLOW (once everything is set up)                                          │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  1. Build feature on dev server (Claude Code session)                               │
+│  2. Test it — run tests, check in browser                                           │
+│  3. git push origin main                                                             │
+│  4. GitHub Actions runs automatically:                                               │
+│       → unit tests                                                                   │
+│       → builds Docker image                                                          │
+│       → pushes image to ghcr.io                                                      │
+│       → SSHes into production                                                        │
+│       → pulls new image                                                              │
+│       → restarts container                                                           │
+│  5. Production updated. You did not touch it directly.                              │
+│                                                                                      │
+│  If something breaks in production:                                                  │
+│       docker compose -f /root/duplex/docker-compose.yml pull <previous-tag>         │
+│       docker compose -f /root/duplex/docker-compose.yml up -d                       │
+│       → old version back in seconds                                                  │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
