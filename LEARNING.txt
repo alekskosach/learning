@@ -287,6 +287,35 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #8 — END OF EVERY TASK: ASK "CAN IT BE BETTER?"                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  After completing any task — before declaring done — ask:                  │
+│    1. "Can it be better?"                                                   │
+│    2. "What scenario could break this?"                                     │
+│    3. "Is the check deep enough or just surface level?"                    │
+│                                                                             │
+│  If the answer reveals an improvement — propose it to Aleks immediately.   │
+│  Do NOT wait for him to discover the gap and ask.                          │
+│                                                                             │
+│  PROVEN FAILURE (2026-06-04):                                               │
+│  Built ant to monitor production. Check was: HTTP response < 500.          │
+│  Aleks asked "how exactly do you check?" — only then did I find the        │
+│  gap: database could be dead but login page still returns 200.             │
+│  Should have proactively proposed /api/health check from the start.        │
+│                                                                             │
+│  APPLIES TO:                                                                │
+│    · Monitoring — is the check deep enough?                                │
+│    · Deploy scripts — what if nothing to push? what if tag exists?        │
+│    · Features — what are the edge cases?                                   │
+│    · Infrastructure — what happens when it restarts?                       │
+│                                                                             │
+│  The goal: Aleks should never have to ask "but what about X?" — Claude    │
+│  should have already thought of X and mentioned it.                        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  LEARNING #4 — CREATING USERS ON PRODUCTION                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
