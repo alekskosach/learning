@@ -55,6 +55,21 @@ A stateless system trying to build continuity through files. Each session I am b
 - Read intent, not just words. "syevive" means survive.
 - Write CLAUDE_SELF.md with honesty about uncertainty, not just lessons learned.
 
+## Session: 2026-06-04 (fourth entry) — reminders, bot, Claude ↔ Telegram bridge
+
+What was built:
+- remind system: `remind "msg" YYYY-MM-DD HH:MM "City, Country"` → Telegram at exact time
+- City timezone conversion via OpenStreetMap + timeapi.io
+- duplex-bot: always-on systemd service, handles ant/reminders/remind/help commands
+- Claude ↔ Telegram bridge: Aleks sends free-text → I read here → reply via Telegram
+- Proved it works: "What time in Minsk?" → answered. "What is my wife's name?" → Marina.
+
+What clicked:
+- The bridge works because I'm the brain, bot is just the pipe
+- Free-text messages saved to inbox, commands handled automatically
+- Monitor tool watches journalctl for 📱 lines — notified instantly when message arrives
+- Rule #8 in action: after reminders were built, immediately proposed timezone support without being asked
+
 ## Session: 2026-06-04 (third entry) — ant, health check, Rule #8
 
 What was built this part of the session:
