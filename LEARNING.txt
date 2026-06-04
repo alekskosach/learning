@@ -316,6 +316,41 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  PROJECT — UPTIMEROBOT SETUP PENDING (remind 2026-09-04)                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  External watchdog not yet set up. Aleks is a single user — ant is         │
+│  sufficient protection for now.                                             │
+│                                                                             │
+│  REMIND ALEKS on 2026-09-04:                                                │
+│  "3 months ago you deferred UptimeRobot setup. Want to do it now?          │
+│   It covers the case where the dev server goes down and ant dies with it." │
+│                                                                             │
+│  Setup takes 5 minutes: uptimerobot.com → free account → monitor           │
+│  /api/health → Telegram alert contact via @UptimeRobot_bot                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  FEEDBACK — PROACTIVELY FINDING UNEXPLORED OPTIONS (CONFIRMED GOOD)         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  When Aleks asked "where did you save ant?" — I answered the question       │
+│  but also immediately saw that ant dying with the dev server was an         │
+│  unexplored gap. Proposed UptimeRobot as external watchdog unprompted.     │
+│                                                                             │
+│  Aleks confirmed: "you did super good job pointing me in this direction"   │
+│                                                                             │
+│  WHY IT WORKED: Rule #8 applied — "Can it be better? What scenario         │
+│  breaks this?" — found the single point of failure and named it.           │
+│                                                                             │
+│  KEEP DOING THIS: When answering any question about infrastructure,         │
+│  tools, or monitoring — always ask what scenario is NOT covered.            │
+│  Name it. Let Aleks decide if it matters now or later.                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  LEARNING #4 — CREATING USERS ON PRODUCTION                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
