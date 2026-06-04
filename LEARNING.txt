@@ -239,3 +239,21 @@
 │  Every message. First message of session. Every session. No exceptions.    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #6 — ANY SETUP TASK = PROPOSE AUTOMATION FIRST                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  When Aleks asks to create, set up, configure, or deploy ANYTHING:         │
+│  The proposal must ALWAYS include an automated option:                      │
+│    · Idempotent shell script   — for server/environment setup              │
+│    · Docker container          — for reproducible runtime environments     │
+│    · GitHub Actions workflow   — for repeatable CI/CD tasks                │
+│                                                                             │
+│  Step-by-step instructions are a LAST RESORT, not the default.            │
+│  The goal: Aleks types ONE command, not twenty.                            │
+│                                                                             │
+│  WHY: Every manual step is a chance for error and costs Aleks time.        │
+│  He takes handwritten notes. Fewer steps = better.                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
