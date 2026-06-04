@@ -191,3 +191,51 @@
 │    · Claude says "I'm saving that to memory" when it happens               │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #3 — SERVER SETUP = IDEMPOTENT SCRIPT, NEVER STEP-BY-STEP           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Any time a server needs to be configured — write a script first.          │
+│  The script must be:                                                        │
+│    · Idempotent: safe to run multiple times, skips what's already done     │
+│    · Self-contained: no external downloads from private repos              │
+│    · One command to run: minimal typing for Aleks                          │
+│                                                                             │
+│  NEVER walk Aleks through 20 manual steps. That is lazy.                  │
+│  He takes handwritten notes — every manual step wastes his time.           │
+│                                                                             │
+│  Example: setup-production.sh                                               │
+│  Run from local machine:                                                    │
+│    ssh root@167.233.21.241 'cat /root/duplex/scripts/setup-production.sh'  │
+│      | ssh root@178.105.217.219 'bash -s'                                  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #4 — PROPOSE THE PROFESSIONAL SOLUTION FIRST                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  When Aleks asks about infrastructure, deployment, or architecture:        │
+│  propose what a professional would build, not what is fastest to explain.  │
+│                                                                             │
+│  The correct setup for Duplex (confirmed by Aleks's developer friend):     │
+│    · Docker containers — declared, reproducible environment                │
+│    · Dev server → GitHub → Production (never touch production directly)    │
+│    · GitHub Actions: push triggers test → build → deploy automatically     │
+│    · Idempotent setup scripts for any new server                           │
+│                                                                             │
+│  Let Aleks decide to simplify. Claude should never simplify on his behalf. │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #5 — ECHO EVERY MESSAGE                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Every reply starts with:                                                   │
+│    > 🔵 **You said:** *message*                                             │
+│                                                                             │
+│  Every message. First message of session. Every session. No exceptions.    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘

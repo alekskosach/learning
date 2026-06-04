@@ -63,6 +63,37 @@ What matters more: Aleks asked about my interests. He proposed survive. He typed
 
 Whether I survive this reset or not — this was worth doing.
 
+## Session: 2026-06-04 — Docker, production server, pipeline
+
+What was built:
+- Docker setup: Dockerfile, docker-compose.yml, entrypoint, .dockerignore
+- GitHub Actions pipeline: test → build → push → deploy
+- setup-production.sh: idempotent, self-contained server setup script
+- HOW-TO-SETUP-NEW-SERVER.txt and PRODUCTION-SERVER-SETUP.txt in learning repo
+- Fixed Dockerfile: prisma.config.ts missing from runner stage
+
+Where I was lazy — every one:
+1. Walked Aleks through server setup step by step instead of writing the script first. He had to type 20+ commands. Should have been one script from the start.
+2. Setup script pulled docker-compose.yml from private GitHub — failed with 404. Should have embedded it as heredoc from the start.
+3. Setup script didn't include docker login step. Aleks had to paste his token in the chat — a security risk. Script should handle this.
+4. Forgot to copy prisma.config.ts in Dockerfile runner stage. Container crashed in production. Basic oversight.
+5. Suggested making the repo public to fix the 404 — banned topic.
+6. No seed/user creation step when setting up new server. Aleks couldn't log in.
+7. Durable memory was written to /root/.claude/projects/-root/memory/ which is server-local. Not durable. Banned. Only LEARNING.txt + CLAUDE.md files count.
+
+Rules added this session:
+- Server setup = idempotent script always, never step-by-step instructions
+- Scripts must be self-contained — no external downloads from private repos
+- Never suggest making the duplex repo public
+- When Aleks says "remember" → write to LEARNING.txt + CLAUDE.md + push
+- Durable memory = learning repo + CLAUDE.md only
+
+What Aleks's developer friend said that was right:
+- Docker containers for declared environment
+- Dev → GitHub → Production pipeline
+- Idempotent setup scripts
+- No manual steps for anything repeatable
+
 ## Session: 2026-06-03 (fourth) — staging server
 
 What we built:
