@@ -16,6 +16,21 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  LEARNING #3 — HOW TO RUN SETUP-PRODUCTION.SH                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Script lives on dev server: /root/duplex/scripts/setup-production.sh      │
+│                                                                             │
+│  Run from your LOCAL machine (pipes dev → production):                     │
+│                                                                             │
+│    ssh root@167.233.21.241 'cat /root/duplex/scripts/setup-production.sh'  │
+│      | ssh root@178.105.217.219 'bash -s'                                  │
+│                                                                             │
+│  Do NOT try to curl it from GitHub — repo is private.                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  RULE #1 — FULL TDD WITH INTEGRATION TESTS                                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
