@@ -29,12 +29,14 @@
 │  STEP 2 — Connect to the server                                                      │
 ├──────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                      │
+│  Your duplex-production IP is: 178.105.217.219                                       │
+│                                                                                      │
 │  Open terminal on your local machine and type:                                       │
 │                                                                                      │
-│    ssh root@<YOUR-SERVER-IP>                                                         │
+│    ssh root@178.105.217.219                                                          │
 │                                                                                      │
 │  If you see a WARNING about host identification changed:                             │
-│    ssh-keygen -f '/home/aeksandrkosachevsky/.ssh/known_hosts' -R '<YOUR-SERVER-IP>' │
+│    ssh-keygen -f '/home/aeksandrkosachevsky/.ssh/known_hosts' -R '178.105.217.219' │
 │    Then try ssh again.                                                               │
 │                                                                                      │
 │  You should see:  root@duplex-production:~#                                          │
@@ -94,7 +96,7 @@
 │  Go to: https://github.com/alekskosach/duplex/actions                               │
 │  Watch the pipeline run: test → build → deploy                                      │
 │                                                                                      │
-│  When it goes green — open http://<YOUR-SERVER-IP>:3000 in your browser.           │
+│  When it goes green — open http://178.105.217.219:3000 in your browser.           │
 │  You should see the Duplex login page.                                              │
 │                                                                                      │
 │  That's it. Production is live.                                                     │
