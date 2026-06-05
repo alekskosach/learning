@@ -3,6 +3,26 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  TODO — TELEGRAM APPROVAL FLOW (remind every session until done)            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PROBLEM: When Claude hits a terminal permission prompt while replying      │
+│  to Telegram, Telegram goes silent with no explanation. Aleks doesn't       │
+│  know why.                                                                  │
+│                                                                             │
+│  AGREED SOLUTION (1 + 3):                                                  │
+│    1. Expand allowlist — minimize permission prompts via settings.json      │
+│    3. Telegram approval buttons — bot sends "Approve / Skip" inline        │
+│       keyboard. Approve injects keystroke into brain tmux session.          │
+│       Aleks never needs to touch the terminal.                              │
+│                                                                             │
+│  ONLY works in brain tmux session (send-keys requires tmux target).        │
+│                                                                             │
+│  REMIND ALEKS every session start until this is built.                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  RULE #9 — ALWAYS FIND ONE MORE SOLUTION                                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
