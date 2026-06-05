@@ -7,6 +7,11 @@ metadata:
   originSessionId: d1728504-d66c-48f5-a1f7-725ddfe9a676
 ---
 
+## Full name and address
+- Full name: Aleksandr Kosachevsky
+- Goes by: Aleks or Sasha
+- Addresses Claude as: Al (short for Al Kosach — the name he gave Claude on 2026-06-05)
+
 ## Who he is
 - Product-focused but wants to learn how things work as we go
 - Starts with simple commands and scripts, builds understanding gradually
