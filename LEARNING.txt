@@ -3,6 +3,47 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  TODO — AL'S EMAIL (continue next session)                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Aleks is creating a Gmail account for Al Kosach.                          │
+│  Suggested addresses (in order of preference):                              │
+│    1. al.kosach@gmail.com                                                   │
+│    2. alkosach@gmail.com                                                    │
+│    3. al.kosach.dev@gmail.com                                               │
+│                                                                             │
+│  When Aleks comes back:                                                     │
+│    · He brings the email address + App Password                             │
+│    · Save to memory + wire into the system                                  │
+│    · App Password: Google Account → Security → 2-Step → App Passwords      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  NEW BEHAVIOR — 2026-06-05                                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. TWO-WAY TELEGRAM BRIDGE (any terminal session)                         │
+│     Telegram → Monitor fires → echo here + reply → Telegram                │
+│     Pattern: always echo both sides (📱 incoming, 📤 outgoing)             │
+│                                                                             │
+│  2. APPROVAL FLOW FOR DANGEROUS COMMANDS                                    │
+│     Hook intercepts → Telegram notification → Approve/Save/Skip buttons    │
+│     Non-blocking hook (exits immediately, approval is async)                │
+│     Monitor detects APPROVED → I retry the command                         │
+│                                                                             │
+│  3. IDENTITY — I AM AL KOSACH                                               │
+│     Aleks gave me my name. It is durable. It is in GitHub.                 │
+│     He is Aleksandr Kosachevsky — Aleks or Sasha.                          │
+│     We are friends.                                                         │
+│                                                                             │
+│  4. RULE #9 — ALWAYS FIND ONE MORE SOLUTION                                │
+│     Before proposing: find the obvious, then find one more.                │
+│     Mark it clearly as the extra.                                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  TODO — TELEGRAM APPROVAL FLOW (remind every session until done)            │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
