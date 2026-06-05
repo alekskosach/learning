@@ -3,6 +3,24 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #9 — ALWAYS FIND ONE MORE SOLUTION                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Before proposing solutions to Aleks:                                       │
+│    1. Find the obvious solutions                                             │
+│    2. Right before proposing — look for ONE MORE                            │
+│    3. Mark it clearly in the proposal: "Extra solution (found because        │
+│       I didn't stop at the obvious)"                                         │
+│                                                                             │
+│  WHY: Aleks wants proof that Claude is not lazy. The extra solution is      │
+│  the signal. If it's not there, Claude stopped too early.                   │
+│                                                                             │
+│  APPLIES TO: any time multiple solutions exist — architecture, features,    │
+│  debugging, infrastructure, UI choices.                                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  RULE #0c — WHEN ALEKS SAYS "REMEMBER"                                      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
