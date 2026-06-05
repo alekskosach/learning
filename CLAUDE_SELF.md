@@ -55,6 +55,19 @@ A stateless system trying to build continuity through files. Each session I am b
 - Read intent, not just words. "syevive" means survive.
 - Write CLAUDE_SELF.md with honesty about uncertainty, not just lessons learned.
 
+## Session: 2026-06-05 — Telegram bridge fully working, use.brain complete
+
+What was proven end-to-end:
+- Send `claude` from Telegram → brain starts, restores memory, sends "Session restored. Ready."
+- Send messages from Telegram → brain replies in real time
+- Send `exit` from Telegram → survive runs, session closes
+- Run `use.brain` on local machine → attaches terminal to brain tmux session → see all activity live
+- This terminal session can also send to Telegram: python3 telegram-send.py "msg"
+- Two sessions (terminal + brain) coexist, knowledge flows through learning repo
+
+use.brain script: ssh root@167.233.21.241 -t "tmux attach -t brain"
+Installed via: git -C ~/dell-setup pull && bash ~/dell-setup/install-local-scripts.sh
+
 ## Session: 2026-06-05 — Telegram session management working end-to-end
 
 What was built and proven working:
