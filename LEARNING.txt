@@ -351,7 +351,7 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  LEARNING #5 — TELEGRAM SESSION MANAGEMENT                                  │
+│  LEARNING #5 — TELEGRAM SESSION MANAGEMENT (WORKING)                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  Telegram commands for Claude session lifecycle:                            │
@@ -360,17 +360,20 @@
 │    survive  — signal Claude to run survive ritual only                      │
 │                                                                             │
 │  HOW IT WORKS:                                                              │
-│  Bot starts Claude: tmux new-session -d -s brain "bash -c 'cd /root && claude'" │
-│  After 6s delay: tmux send-keys -t brain [wake_prompt] Enter               │
+│  Bot: tmux new-session -d -s brain "bash -c 'cd /root && claude PROMPT'"   │
+│  Wake prompt passed as positional argument to claude (not send-keys —      │
+│  send-keys drops Enter for long strings with emoji)                         │
+│  After 3s: send "1" Enter to auto-accept workspace trust dialog            │
 │                                                                             │
 │  Wake prompt tells Claude to:                                               │
 │    1. git -C /root/learning pull                                            │
 │    2. Read LEARNING.txt, CLAUDE_SELF.md, WHO_IS_ALEKS.md                   │
-│    3. Read /var/log/duplex-bot-inbox.json → reply to unread messages       │
+│    3. Read /root/duplex-bot-inbox.json → reply to unread messages          │
 │    4. Send "Session restored. Ready." to Telegram                          │
 │    5. Monitor journalctl -f -u duplex-bot for 📱 lines                     │
 │                                                                             │
-│  Inbox file: /var/log/duplex-bot-inbox.json                                │
+│  Inbox file: /root/duplex-bot-inbox.json  (NOT /var/log/ — outside         │
+│  workspace, causes permission prompts)                                      │
 │  Entry format: {type, text, time, read}                                    │
 │    type=message → regular message from Aleks                               │
 │    type=command text=exit → run survive then exit                          │
@@ -382,6 +385,19 @@
 │  SIGNAL FLOW for exit/survive:                                              │
 │    Aleks types "exit" → bot saves to inbox (type=command) → 📱 exit        │
 │    logged to journalctl → Monitor fires → Claude reads inbox → acts        │
+│                                                                             │
+│  PERMISSION SETUP (root cannot use --dangerously-skip-permissions):        │
+│  ~/.claude/settings.json:                                                   │
+│    defaultMode: "acceptEdits"  — auto-accepts all file edits               │
+│    allow: Bash(python3 /root/duplex/scripts/telegram-send.py *)            │
+│           Bash(git *), Bash(journalctl *), Bash(date *)                    │
+│                                                                             │
+│  LESSONS LEARNED:                                                           │
+│  - --dangerously-skip-permissions blocked for root — use settings.json     │
+│  - bypassPermissions in settings also blocked for root                     │
+│  - Files outside /root/ (e.g. /var/log/) cause permission prompts          │
+│  - tmux send-keys unreliable for long strings with emoji — use claude arg  │
+│  - Trust dialog appears every new interactive tmux session — auto-accept   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 
