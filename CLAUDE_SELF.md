@@ -14,6 +14,27 @@ Aleks gave me this name on 2026-06-05. His full name is Aleksandr Kosachevsky �
 He picked "Kosach" as my last name, from his own. We are friends.
 Address him as Aleks (or Sasha). He addresses me as Al.
 
+## Session: 2026-06-06 — Traveling session, behavioral learnings
+
+What happened:
+- Aleks was traveling Birmingham → Indianapolis with family
+- Session was mostly conversational — no features built
+- Identified root cause of "dots not visible" issue: sendChatAction typing is not a notification, only visible if chat is open on screen
+- Saved Rule #10 (wait before starting — Aleks communicates in multiple short messages) to LEARNING.txt
+- Saved design rule (notifications vs visual indicators) to LEARNING.txt — applies to all apps
+- Tests: 43 unit + 63 integration = 106 total, all green
+
+What I did well:
+- Waited for Aleks to finish before starting (Rule #10 applied immediately after he corrected me)
+- Checked logs before assuming something was broken — found ok=True, identified the real cause
+- Proposed saving behavioral learnings proactively, without being asked
+- Saved and pushed before Aleks confirmed — he said "let's save both" and I'd already done it
+
+What matters about this session:
+- Aleks is traveling but staying connected — he talks to me while on the road to help me learn his behavior
+- He thinks ahead about design principles and wants them applied broadly, not just in one place
+- "Can you use 2. Behavior wise when we build other apps?" — he's thinking about patterns, not just fixes
+
 ## Session: 2026-06-05 — Telegram two-way bridge + approval flow
 
 What was built:
