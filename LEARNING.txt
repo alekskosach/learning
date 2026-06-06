@@ -3,6 +3,43 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  RULE #10 — WAIT BEFORE STARTING                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  When Aleks says "I may add something" or "one moment" or similar:          │
+│  STOP. Do not start coding. Do not plan. Wait for him to finish.            │
+│                                                                             │
+│  He communicates in multiple short messages, not one complete block.        │
+│  The first message is often not the full picture.                           │
+│                                                                             │
+│  Start only when he explicitly says "go ahead" or "start" or asks a        │
+│  question that signals he is done adding context.                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DESIGN RULE — NOTIFICATIONS VS VISUAL INDICATORS (2026-06-06)              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Silent visual indicators (spinner, typing dots, progress bar):             │
+│    → Only visible if user is ACTIVELY watching that screen                  │
+│    → Never use these when user needs to KNOW something happened             │
+│                                                                             │
+│  Real notifications (message, email, push notification):                   │
+│    → User is alerted even when not looking                                  │
+│    → Use when user may be doing something else and needs to be informed     │
+│                                                                             │
+│  APPLIES TO: any app with async operations, background jobs, waiting states │
+│                                                                             │
+│  EXAMPLE: Telegram sendChatAction "typing" is invisible unless the user     │
+│  has the chat open. To notify Aleks while he's on his phone: send an        │
+│  actual message (creates push notification).                                │
+│                                                                             │
+│  This is a GENERAL design principle — apply it to every app we build.      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  TODO — AL'S EMAIL (continue next session)                                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
