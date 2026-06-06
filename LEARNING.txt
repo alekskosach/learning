@@ -3,6 +3,22 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  DONE — BRAIN SESSION AUTO-START (2026-06-06)                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  All complete and verified:                                                  │
+│  1. Auto-start on message — bot.py handle() wakes brain if not running     │
+│  2. Auto-start on reboot — systemd service enabled + _autostart_on_startup │
+│  3. Typing dots — typing_loop() sends 🔵 messages (push notifications)     │
+│     Dots escalate: 🔵 → 🔵🔵 → 🔵🔵🔵 at 30s → 60s → 2min               │
+│     Deleted when Al replies (inbox message marked read)                     │
+│  4. "Al" command — bot.py accepts "al" as alias for "claude"               │
+│                                                                             │
+│  Color scheme: TBD (Aleks choosing 2026-06-06)                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  RULE #10 — WAIT BEFORE STARTING                                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │

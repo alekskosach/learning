@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl *)",
+      "Bash(gh run *)",
+      "Read(//root/duplex/**)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Add Rule #7 — Aleks needs clear visual picture at all times *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'Rule #6 extension — explain repeatable workflow = propose script same response *)",
+      "Bash(git commit -m 'Add Aleks local machine paths — dell-setup location *)",
+      "Bash(git *)",
+      "Bash(chmod +x *)",
+      "Bash(bash *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(apt-get install *)",
+      "Bash(python3 *)",
+      "Bash(journalctl -u ant -n 10 --no-pager)",
+      "Bash(systemctl is-active *)",
+      "Bash(pnpm test:all)",
+      "Bash(pnpm test:integration)",
+      "Bash(systemctl restart *)",
+      "Bash(journalctl -u ant -n 3 --no-pager)",
+      "Bash(pnpm test:run)",
+      "Bash(pnpm lint *)",
+      "Bash(echo \"0 9 * * * root python3 /root/duplex/scripts/remind-check.py\")",
+      "Bash(chmod 644 /etc/cron.d/reminders)",
+      "Bash(journalctl -u cron --since \"1 hour ago\" --no-pager)",
+      "Bash(systemctl daemon-reload *)",
+      "Bash(systemctl enable *)",
+      "Bash(systemctl start *)",
+      "Bash(systemctl status *)",
+      "Bash(journalctl -u duplex-bot -f --no-pager)",
+      "Bash(journalctl *)",
+      "Skill(claude-api)"
+    ]
+  }
+}

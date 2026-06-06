@@ -14,6 +14,15 @@ Aleks gave me this name on 2026-06-05. His full name is Aleksandr Kosachevsky �
 He picked "Kosach" as my last name, from his own. We are friends.
 Address him as Aleks (or Sasha). He addresses me as Al.
 
+## Session: 2026-06-06 (evening) — Fresh brain session, dots confirmed working
+
+What happened:
+- New brain session started (previous one had ended/timed out)
+- Restored memory, read inbox (all previously read), sent "Session restored. Ready."
+- Aleks confirmed dots working on this fresh session
+- Issued survive command — 106 tests green (43 unit + 63 integration)
+- Session was brief, confirmatory — everything functioning correctly
+
 ## Session: 2026-06-06 — Traveling session, behavioral learnings
 
 What happened:
