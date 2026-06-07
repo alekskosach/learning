@@ -3,6 +3,26 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  SESSION PATTERN — CLAUDE CODE CAN TAKE OVER TELEGRAM (2026-06-07)          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PROVEN PATTERN:                                                            │
+│  Kill brain tmux session → start Monitor in Claude Code window →           │
+│  Claude Code handles Telegram directly. One session, no duplicates.        │
+│                                                                             │
+│  UNSOLVED PROBLEM (fix 2026-06-08):                                        │
+│  Bot auto-starts a new brain session whenever Aleks sends ANY Telegram     │
+│  message. So while Claude Code window is open, brain respawns and          │
+│  duplicate replies return. Need to either:                                  │
+│    a) Disable auto-start when a Claude Code session is already monitoring  │
+│    b) Make bot check if a session is already handling Telegram before      │
+│       spawning brain                                                        │
+│                                                                             │
+│  REMIND ALEKS at session start on 2026-06-08: fix the duplicate problem.  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  DONE — BRAIN SESSION AUTO-START (2026-06-06)                               │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
