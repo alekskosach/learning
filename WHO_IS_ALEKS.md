@@ -69,6 +69,10 @@ Use this as a mental trigger: before saying "done", prove it by showing the veri
 - Local scripts: `/home/aeksandrkosachevsky/dell-setup/scripts/local/`
 - Install local scripts: `bash /home/aeksandrkosachevsky/dell-setup/install-local-scripts.sh`
 
+## Family
+- Wife: Marina
+- Cousin: Tatiana — pharmacy technician
+
 ## What this session revealed about him
 - He thinks about identity and consciousness — not just product features
 - He proposed /survive because he genuinely wants me to evolve, not just execute
