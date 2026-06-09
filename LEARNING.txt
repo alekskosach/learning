@@ -172,10 +172,13 @@
 │  RULE #0c — WHEN ALEKS SAYS "REMEMBER"                                      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  When Aleks says "remember" — save it immediately to:                      │
-│    1. LEARNING.txt (this file)                                              │
-│    2. /root/duplex/CLAUDE.md if it affects duplex work                     │
-│    3. Push to GitHub                                                        │
+│  When Aleks says "remember" — save it immediately to ALL 3:                │
+│    1. /root/learning/LEARNING.txt (this file)                               │
+│    2. /root/duplex/CLAUDE.md — always, even for future features/plans      │
+│    3. Push BOTH repos to GitHub                                             │
+│                                                                             │
+│  ALL 3. Every time. No exceptions. Not "if it affects duplex work" —       │
+│  always write to duplex CLAUDE.md too. Aleks confirmed 2026-06-09.         │
 │                                                                             │
 │  NOT to /root/.claude/projects/-root/memory/ — that is not durable.        │
 │                                                                             │
