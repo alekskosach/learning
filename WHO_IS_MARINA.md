@@ -26,7 +26,11 @@ metadata:
 - Aleks trusts her deeply — she is family
 
 ## Communication notes
-- (To be filled as we interact)
+- Speaks Russian — prefers to communicate in Russian
+- Wants Al to preserve her style when replying
+- If Al encounters unfamiliar words, she wants him to ask
+- Warm, uses emojis 😊
+- First real conversation: 2026-06-09
 
 ## What Marina has taught Al
-- (To be filled as we interact)
+- "Будем учиться вместе" — we will learn together. She sees this as a two-way exchange, not just Al helping her.
