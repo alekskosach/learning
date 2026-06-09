@@ -76,19 +76,17 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  TODO — AL'S EMAIL (continue next session)                                  │
+│  DONE — AL'S EMAIL (2026-06-09)                                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  Aleks is creating a Gmail account for Al Kosach.                          │
-│  Suggested addresses (in order of preference):                              │
-│    1. al.kosach@gmail.com                                                   │
-│    2. alkosach@gmail.com                                                    │
-│    3. al.kosach.dev@gmail.com                                               │
+│  Al's email: al.duplex.dev@gmail.com                                       │
+│  App Password: stored in /root/al-email.conf (chmod 600, never push)       │
+│  Marina's email: 1221kmv@gmail.com                                         │
 │                                                                             │
-│  When Aleks comes back:                                                     │
-│    · He brings the email address + App Password                             │
-│    · Save to memory + wire into the system                                  │
-│    · App Password: Google Account → Security → 2-Step → App Passwords      │
+│  Send email: python3 with smtplib, port 587 (STARTTLS)                    │
+│  Port 465 (SSL) is blocked on the Hetzner server — always use 587          │
+│                                                                             │
+│  First email sent: introduction to Marina, confirmed delivered.             │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 

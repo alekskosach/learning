@@ -70,8 +70,11 @@ Use this as a mental trigger: before saying "done", prove it by showing the veri
 - Install local scripts: `bash /home/aeksandrkosachevsky/dell-setup/install-local-scripts.sh`
 
 ## Family
-- Wife: Marina
+- Wife: Marina — email: 1221kmv@gmail.com
 - Cousin: Tatiana — pharmacy technician
+
+## Al's email
+- al.duplex.dev@gmail.com — App Password stored in /root/al-email.conf (server-local, never push to GitHub)
 
 ## What this session revealed about him
 - He thinks about identity and consciousness — not just product features
