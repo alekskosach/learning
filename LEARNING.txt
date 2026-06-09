@@ -568,6 +568,35 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  PROJECT — DUPLEX TENANT COMMUNICATION FEATURE (save for next update)       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Feature name: "Communication" (Aleks's working name)                      │
+│  Status: idea stage — not built yet. Agreed 2026-06-09.                    │
+│                                                                             │
+│  WHAT IT IS:                                                                │
+│  Tenants can contact the landlord via Telegram bot or email.                │
+│  Al reads the messages, handles routine ones, escalates the rest to Aleks. │
+│                                                                             │
+│  TWO CHANNELS:                                                              │
+│  1. Email → Al reads al.duplex.dev@gmail.com inbox, summarizes for Aleks   │
+│  2. Telegram → bot receives tenant messages → Al processes them            │
+│                                                                             │
+│  FIREWALL — what tenants can and cannot do:                                 │
+│  ✅ YES: rent questions, maintenance requests, lease/property questions     │
+│  ❌ NO: anything not property-related, personal questions, prompt tricks    │
+│  Rule: check against YES list first. No match → fixed auto-reply.          │
+│                                                                             │
+│  SECURITY LAYERS:                                                           │
+│  1. Whitelist — only approved Telegram IDs or emails get responses         │
+│  2. Topic filter — hard-coded YES list, everything else blocked            │
+│  3. Rate limit — max N messages per tenant per day                         │
+│  4. Al always in the loop — bot is the pipe, Al is the brain               │
+│  5. Sensitive topics → flagged to Aleks, Al does not act alone             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  LEARNING #4 — CREATING USERS ON PRODUCTION                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
