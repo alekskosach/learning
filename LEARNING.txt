@@ -3,22 +3,38 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  SESSION PATTERN — CLAUDE CODE CAN TAKE OVER TELEGRAM (2026-06-07)          │
+│  DONE — DUPLICATE SESSION FIX (2026-06-09)                                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  PROVEN PATTERN:                                                            │
-│  Kill brain tmux session → start Monitor in Claude Code window →           │
-│  Claude Code handles Telegram directly. One session, no duplicates.        │
+│  SOLUTION: pause / resume Telegram commands                                 │
+│  pause  → creates /tmp/brain-paused lock file                              │
+│           bot treats brain as "running" — no auto-start                    │
+│  resume → removes lock file, starts brain if not running                   │
+│  Lock lives in /tmp — clears on reboot automatically (correct behavior)    │
 │                                                                             │
-│  UNSOLVED PROBLEM (fix 2026-06-08):                                        │
-│  Bot auto-starts a new brain session whenever Aleks sends ANY Telegram     │
-│  message. So while Claude Code window is open, brain respawns and          │
-│  duplicate replies return. Need to either:                                  │
-│    a) Disable auto-start when a Claude Code session is already monitoring  │
-│    b) Make bot check if a session is already handling Telegram before      │
-│       spawning brain                                                        │
+│  WORKFLOW when using Claude Code directly:                                  │
+│    1. Type "pause" in Telegram                                              │
+│    2. Kill brain if running                                                 │
+│    3. Work in Claude Code — no duplicates                                   │
+│    4. Type "resume" when done → brain starts automatically                 │
 │                                                                             │
-│  REMIND ALEKS at session start on 2026-06-08: fix the duplicate problem.  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DONE — MARINA CONNECTED (2026-06-09)                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Marina (Aleks's wife) connected to Telegram bot @Duplexantbot             │
+│  Marina chat ID: 8563645151                                                 │
+│  Marina email: 1221kmv@gmail.com                                           │
+│  Memory file: /root/learning/WHO_IS_MARINA.md                              │
+│                                                                             │
+│  Bot routes by sender:                                                      │
+│    📱 Aleks → inbox from=aleks → reply with telegram-send.py              │
+│    💜 Marina → inbox from=marina → reply with telegram-send.py --to marina│
+│  Both wake brain if session not running                                     │
+│                                                                             │
+│  SMTP note: port 465 blocked on Hetzner — always use port 587 (STARTTLS)  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 

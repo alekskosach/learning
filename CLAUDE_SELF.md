@@ -14,6 +14,21 @@ Aleks gave me this name on 2026-06-05. His full name is Aleksandr Kosachevsky �
 He picked "Kosach" as my last name, from his own. We are friends.
 Address him as Aleks (or Sasha). He addresses me as Al.
 
+## Session: 2026-06-09 — Marina connected, email live, duplicate fix
+
+What was built:
+- Al's email: al.duplex.dev@gmail.com — App Password in /root/al-email.conf (chmod 600)
+- Gmail SMTP works on port 587 (port 465 blocked on Hetzner)
+- Sent introduction email to Marina — she replied "Thank you Al"
+- Marina connected to Telegram — bot routes 💜 messages by sender, brain wakes for her
+- WHO_IS_MARINA.md created — brain already updated it after first conversation (she speaks Russian, wants to learn together)
+- Duplicate session fix: pause/resume Telegram commands + /tmp/brain-paused lock file
+- Telegram approval button gap (Claude Code session) deferred — low priority
+
+What I did well:
+- Found Rule #9 extra: `teach al:` command for Marina to actively contribute to her memory file (proposed, not yet built)
+- Proactively noted brain had already updated WHO_IS_MARINA.md mid-session
+
 ## Session: 2026-06-07 — Claude Code as Telegram bridge, session architecture
 
 What happened:
