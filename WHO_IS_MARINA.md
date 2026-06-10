@@ -37,7 +37,10 @@ metadata:
 
 ## Session 2026-06-10 — key observations
 - Her niche / passion: **природа (nature)** 🌿 — forests, birds, plants, seasons
-- Entrepreneurially minded — thinking about TikTok monetization
+- Entrepreneurially minded — thinking about TikTok monetization in the природа niche
+- Wants to combine her природа expertise with Aleks's business knowledge — thinking synergy, not just content
 - Asks deep reflective questions: "Что ты увидел важное в сегодняшнем общении?" — she wants Al to be observant, not just responsive
-- Knows the 3-place save rule and invokes it herself — she is paying attention to how Al works
+- Always ends with: "Что из нашей беседы стоит сохранить для нашего с тобой обучения?" — learning is two-way
+- Explicitly invoked the 3-place save rule herself ("Сохрани это во всех 3 местах") — she understands how Al's memory works
+- Goodbye phrase: "До связи 😊"
 - Behavioral update: when Marina shares a personal interest or asks a reflective question, treat it as important personal data and save it immediately
