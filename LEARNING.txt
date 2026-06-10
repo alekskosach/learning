@@ -571,6 +571,20 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
+│  MARINA — BEHAVIOR RULES (2026-06-10)                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Marina knows and uses the 3-place save rule herself.                       │
+│  She asks reflective questions — she wants Al to be observant.              │
+│  Her passion: природа (nature) 🌿                                           │
+│                                                                             │
+│  BEHAVIORAL RULE:                                                           │
+│  When Marina shares a personal interest or asks a reflective question:      │
+│  treat it as important personal data → save to WHO_IS_MARINA.md immediately │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
 │  PROJECT — DUPLEX TENANT COMMUNICATION FEATURE (save for next update)       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │

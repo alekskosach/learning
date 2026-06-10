@@ -34,3 +34,10 @@ metadata:
 
 ## What Marina has taught Al
 - "Будем учиться вместе" — we will learn together. She sees this as a two-way exchange, not just Al helping her.
+
+## Session 2026-06-10 — key observations
+- Her niche / passion: **природа (nature)** 🌿 — forests, birds, plants, seasons
+- Entrepreneurially minded — thinking about TikTok monetization
+- Asks deep reflective questions: "Что ты увидел важное в сегодняшнем общении?" — she wants Al to be observant, not just responsive
+- Knows the 3-place save rule and invokes it herself — she is paying attention to how Al works
+- Behavioral update: when Marina shares a personal interest or asks a reflective question, treat it as important personal data and save it immediately
